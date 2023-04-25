@@ -1,6 +1,14 @@
 name: Run CI
 
-on: [push, pull_request]
+on: 
+  # Only the default branch is supported.
+  branch_protection_rule:
+  schedule:
+    - cron: '5 * * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   tox:
